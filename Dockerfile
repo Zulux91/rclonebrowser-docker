@@ -34,9 +34,8 @@ RUN apk --no-cache add \
         cmake \
         make \
         gcc \
-        gcc-c++ \
         git \
-        qt5-qtbase qt5-qtmultimedia-dev qt5-qttools-dev qt5-declarative && \
+        qt5-qtbase qt5-qtmultimedia-dev qt5-qttools-dev && \
 
 # Compile RcloneBrowser
     git clone https://github.com/kapitainsky/RcloneBrowser.git /tmp && \
