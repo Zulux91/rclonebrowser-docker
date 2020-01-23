@@ -2,7 +2,7 @@
 # RcloneBrowser Dockerfile
 #
 
-FROM jlesage/baseimage-gui:alpine-3.9-glibc
+FROM jlesage/baseimage-gui:alpine-3.10-glibc
 
 # Define environment variables
 ENV RCLONE_VERSION=current
@@ -24,7 +24,7 @@ RUN apk --no-cache add \
       dbus \
       xterm \
     && cd /tmp \
-    && wget -q http://downloads.rclone.org/rclone-${RCLONE_VERSION}-linux-${ARCH}.zip \
+    && wget -q https://downloads.rclone.org/rclone-${RCLONE_VERSION}-linux-${ARCH}.zip \
     && unzip /tmp/rclone-${RCLONE_VERSION}-linux-${ARCH}.zip \
     && mv /tmp/rclone-*-linux-${ARCH}/rclone /usr/bin \
     && rm -r /tmp/rclone* && \
@@ -34,8 +34,9 @@ RUN apk --no-cache add \
         cmake \
         make \
         gcc \
+        gcc-c++ \
         git \
-        qt5-qtbase qt5-qtmultimedia-dev qt5-qttools-dev && \
+        qt5-qtbase qt5-qtmultimedia-dev qt5-qttools-dev qt5-declarative && \
 
 # Compile RcloneBrowser
     git clone https://github.com/kapitainsky/RcloneBrowser.git /tmp && \
@@ -77,5 +78,5 @@ LABEL \
       org.label-schema.name="rclonebrowser" \
       org.label-schema.description="Docker container for RcloneBrowser" \
       org.label-schema.version="unknown" \
-      org.label-schema.vcs-url="https://github.com/romancin/rclonebrowser-docker" \
+      org.label-schema.vcs-url="https://github.com/Zulux91/rclonebrowser-docker" \
       org.label-schema.schema-version="1.0"
