@@ -5,8 +5,10 @@
 FROM jlesage/baseimage-gui:alpine-3.10-glibc
 
 # Define environment variables
-ENV RCLONE_VERSION=current
+# ENV RCLONE_VERSION=current //current not working. New to docker, can't figure out why.
+ENV RCLONE_VERSION=v1.49.5
 ENV ARCH=amd64
+ENV ARCHIVE_URL=https://downloads.rclone.org/
 
 # Define working directory.
 WORKDIR /tmp
@@ -24,7 +26,7 @@ RUN apk --no-cache add \
       dbus \
       xterm \
     && cd /tmp \
-    && wget -q https://downloads.rclone.org/rclone-${RCLONE_VERSION}-linux-${ARCH}.zip \
+    && wget -q ${ARCHIVE_URL}${RCLONE_VERSION}/rclone-${RCLONE_VERSION}-linux-${ARCH}.zip \
     && unzip /tmp/rclone-${RCLONE_VERSION}-linux-${ARCH}.zip \
     && mv /tmp/rclone-*-linux-${ARCH}/rclone /usr/bin \
     && rm -r /tmp/rclone* && \
@@ -57,7 +59,7 @@ RUN \
 
 # Generate and install favicons.
 RUN \
-    APP_ICON_URL=https://github.com/rclone/rclone/raw/master/graphics/logo/logo_symbol/logo_symbol_color_512px.png && \
+    APP_ICON_URL=https://github.com/kapitainsky/RcloneBrowser/wiki/images/rclone_256.png && \
     install_app_icon.sh "$APP_ICON_URL"
 
 # Add files.
