@@ -31,7 +31,7 @@ docker run -d --name=rclonebrowser \
 -e GROUP_ID=0 -e USER_ID=0 -e TZ=Europe/Madrid \
 -p 5800:5800 \
 -p 5900:5900 \
-romancin/rclonebrowser:latest
+zulux91/rclonebrowser:latest
 ```
 
 Browse to `http://your-host-ip:5800` to access the RClone Browser GUI.
