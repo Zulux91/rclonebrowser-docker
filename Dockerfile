@@ -2,7 +2,7 @@
 # RcloneBrowser Dockerfile
 #
 
-FROM jlesage/baseimage-gui:debian-8
+FROM jlesage/baseimage-gui:ubuntu-18.04
 
 # Define environment variables
 ENV RCLONE_VERSION=current
@@ -13,7 +13,7 @@ WORKDIR /tmp
 
 # Install Rclone Browser dependencies
 
-RUN apk --no-cache add \
+RUN apt update && apt -y install \
       ca-certificates \
       fuse \
       wget \
@@ -29,13 +29,13 @@ RUN apk --no-cache add \
     && mv /tmp/rclone-*-linux-${ARCH}/rclone /usr/bin \
     && rm -r /tmp/rclone* && \
 
-    apk add --no-cache --virtual=build-dependencies \
+    apt install \
         build-base \
         cmake \
         make \
         gcc \
         git \
-        qt5-qtbase qt5-qtmultimedia-dev qt5-qttools-dev && \
+        qt5-qtbase qt5-qtmultimedia-dev qt5-qttools-dev qtdeclarative5-dev && \
 
 # Compile RcloneBrowser
     git clone https://github.com/kapitainsky/RcloneBrowser.git /tmp && \
@@ -47,7 +47,7 @@ RUN apk --no-cache add \
     cp /tmp/build/build/rclone-browser /usr/bin  && \
 
     # cleanup
-     apk del --purge build-dependencies && \
+     apt remove cmake make gcc git qt5-qtbase qt5-qtmultimedia-dev qt5-qttools-dev qtdeclarative5-dev && \
     rm -rf /tmp/*
  
 # Maximize only the main/initial window.
