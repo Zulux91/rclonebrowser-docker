@@ -26,7 +26,7 @@ RUN apt update && apt -y install \
     && mv /tmp/rclone-*-linux-${ARCH}/rclone /usr/bin \
     && rm -r /tmp/rclone* && \
 
-    apt install \
+    apt -y install \
         cmake \
         make \
         g++ \
