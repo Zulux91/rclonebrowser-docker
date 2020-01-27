@@ -17,10 +17,7 @@ RUN apt update && apt -y install \
       ca-certificates \
       fuse \
       wget \
-      qt5-qtbase \
-      qt5-qtbase-x11 \
       libstdc++ \
-      libgcc \
       dbus \
       xterm \
     && cd /tmp \
@@ -35,7 +32,7 @@ RUN apt update && apt -y install \
         make \
         gcc \
         git \
-        qt5-qtbase qt5-qtmultimedia-dev qt5-qttools-dev qtdeclarative5-dev && \
+        qt5-qtmultimedia-dev qt5-qttools-dev qtdeclarative5-dev && \
 
 # Compile RcloneBrowser
     git clone https://github.com/kapitainsky/RcloneBrowser.git /tmp && \
