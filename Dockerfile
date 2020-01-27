@@ -15,6 +15,8 @@ WORKDIR /tmp
 
 RUN apt update && apt -y install \
       fuse \
+      zip \
+      unzip \
       wget \
       dbus \
       xterm \
