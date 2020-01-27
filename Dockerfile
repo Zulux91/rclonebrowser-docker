@@ -27,10 +27,9 @@ RUN apt update && apt -y install \
     && rm -r /tmp/rclone* && \
 
     apt install \
-        build-base \
         cmake \
         make \
-        gcc \
+        g++ \
         git \
         qtdeclarative5-dev && \
 
