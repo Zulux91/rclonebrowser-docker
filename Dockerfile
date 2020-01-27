@@ -14,10 +14,8 @@ WORKDIR /tmp
 # Install Rclone Browser dependencies
 
 RUN apt update && apt -y install \
-      ca-certificates \
       fuse \
       wget \
-      libstdc++ \
       dbus \
       xterm \
     && cd /tmp \
