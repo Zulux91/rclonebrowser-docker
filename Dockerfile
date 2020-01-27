@@ -32,7 +32,7 @@ RUN apt update && apt -y install \
         make \
         gcc \
         git \
-        qt5-qtmultimedia-dev qt5-qttools-dev qtdeclarative5-dev && \
+        qtdeclarative5-dev && \
 
 # Compile RcloneBrowser
     git clone https://github.com/kapitainsky/RcloneBrowser.git /tmp && \
