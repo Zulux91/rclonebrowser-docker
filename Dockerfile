@@ -43,7 +43,7 @@ RUN apt update && apt -y install \
     cp /tmp/build/build/rclone-browser /usr/bin  && \
 
     # cleanup
-     apt remove cmake make g++ zip qtdeclarative5-dev && \
+     apt -y remove cmake make g++ zip qtdeclarative5-dev && \
     rm -rf /tmp/*
  
 # Maximize only the main/initial window.
