@@ -67,7 +67,7 @@ COPY rootfs/ /
 COPY VERSION /
 
 # Set environment variables.
-ENV APP_NAME="RcloneBrowser" \
+ENV APP_NAME="RcloneBrowser-1.8.0" \
     S6_KILL_GRACETIME=8000
 
 # Define mountable directories.
