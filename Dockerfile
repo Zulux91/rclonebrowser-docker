@@ -4,11 +4,12 @@
 
 FROM jlesage/baseimage-gui:alpine-3.11-glibc
 
-# Define build arguments
-ARG RCLONE_VERSION=current
-
 # Define environment variables
 ENV ARCH=amd64
+
+# ENV RCLONE_VERSION=current //current not working. New to docker, can't figure out why.
+ENV RCLONE_VERSION=v1.49.5
+ENV ARCHIVE_URL=https://downloads.rclone.org/
 
 # Define working directory.
 WORKDIR /tmp
@@ -26,7 +27,7 @@ RUN apk --no-cache add \
       dbus \
       xterm && \
     cd /tmp && \
-    wget -q http://downloads.rclone.org/rclone-${RCLONE_VERSION}-linux-${ARCH}.zip && \
+    wget -q ${ARCHIVE_URL}${RCLONE_VERSION}/rclone-${RCLONE_VERSION}-linux-${ARCH}.zip && \
     unzip /tmp/rclone-${RCLONE_VERSION}-linux-${ARCH}.zip && \
     mv /tmp/rclone-*-linux-${ARCH}/rclone /usr/bin && \
     rm -r /tmp/rclone* && \
@@ -76,5 +77,5 @@ LABEL \
       org.label-schema.name="rclonebrowser" \
       org.label-schema.description="Docker container for RcloneBrowser" \
       org.label-schema.version="unknown" \
-      org.label-schema.vcs-url="https://github.com/romancin/rclonebrowser-docker" \
+      org.label-schema.vcs-url="https://github.com/Zulux91/rclonebrowser-docker" \
       org.label-schema.schema-version="1.0"
